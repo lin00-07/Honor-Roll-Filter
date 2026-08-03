@@ -1,0 +1,14 @@
+import csv
+
+with open("0803.csv", "r") as file:
+    with open("honor_roll.csv", "w") as result:
+        reader = csv.DictReader(file)
+        writer = csv.DictWriter(
+            result, fieldnames=["name", "house", "score"]
+            )
+
+        writer.writeheader()
+        for row in reader:
+            score = int(row["score"])
+            if score >= 90:
+                writer.writerow(row)
